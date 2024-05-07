@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
-# hello
+# hello world
 func _ready():
 	animation_tree.set("parameters/Idle/blend_position", starting_direction)
 	
