@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwfboq4c4w72b"]
+
+[ext_resource type="Script" path="res://Objetos/main_menu.gd" id="1_r46ua"]
+[ext_resource type="Texture2D" uid="uid://b21da4u46wrwi" path="res://art/0e9cc742-d600-4dc4-a569-9f9d702f9adb.jpg" id="2_srfql"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r46ua")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0695312
+anchor_bottom = 0.140278
+metadata/_edit_use_anchors_ = true
+
+[node name="0e9Cc742-d600-4Dc4-a569-9f9d702f9Adb" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(160, 96)
+scale = Vector2(0.2, 0.214525)
+texture = ExtResource("2_srfql")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="JUGAR" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "JUGAR"
+
+[node name="OPCIONES" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "OPCIONES
+"
+
+[node name="SALIR" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SALIR"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/JUGAR" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SALIR" to="." method="_on_salir_pressed"]

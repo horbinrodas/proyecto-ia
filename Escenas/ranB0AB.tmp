@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://da08xjehjwb1m"]
+
+[ext_resource type="Script" path="res://Random.gd" id="1_dpysd"]
+[ext_resource type="Texture2D" uid="uid://dy0yng0rkmssh" path="res://art/kenney_tiny-dungeon/Tiles/tile_0000.png" id="2_3nvlt"]
+[ext_resource type="Texture2D" uid="uid://daayltdrnh4td" path="res://art/kenney_tiny-dungeon/Tiles/tile_0040.png" id="3_11ut5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4tri"]
+texture = ExtResource("2_3nvlt")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eloir"]
+texture = ExtResource("3_11ut5")
+0:0/0 = 0
+0:0/0/terrain_set = 1
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_nfvv8"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "walkable"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_1/mode = 0
+terrain_set_1/terrain_0/name = "Walls"
+terrain_set_1/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+custom_data_layer_0/name = "walkable"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_f4tri")
+sources/4 = SubResource("TileSetAtlasSource_eloir")
+
+[node name="Random" type="Node2D"]
+script = ExtResource("1_dpysd")
+
+[node name="Rooms" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.1
+
+[node name="TileMap" type="TileMap" parent="."]
+show_behind_parent = true
+tile_set = SubResource("TileSet_nfvv8")
+format = 2

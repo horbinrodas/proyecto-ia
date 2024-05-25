@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dksq5vyg3lg6l"]
+
+[ext_resource type="Texture2D" uid="uid://b30h1gyqsy4kw" path="res://art/Sprout Lands - Sprites - Basic pack/Objects/Chest.png" id="1_7rxf7"]
+[ext_resource type="Script" path="res://Objetos/cofre.gd" id="1_g0dy6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yb7j3"]
+radius = 14.6373
+
+[sub_resource type="Animation" id="Animation_rxe1r"]
+resource_name = "open_animation"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldcod"]
+_data = {
+"open_animation": SubResource("Animation_rxe1r")
+}
+
+[node name="Cofre" type="Area2D" groups=["cofre"]]
+script = ExtResource("1_g0dy6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7rxf7")
+hframes = 5
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yb7j3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ldcod")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

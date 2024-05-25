@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://2a3rf7uy0jfn"]
+
+[ext_resource type="Script" path="res://Objetos/level_select_menu.gd" id="1_3jb7o"]
+[ext_resource type="Texture2D" uid="uid://b21da4u46wrwi" path="res://art/0e9cc742-d600-4dc4-a569-9f9d702f9adb.jpg" id="2_8o0j6"]
+
+[node name="level_select_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3jb7o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="0e9Cc742-d600-4Dc4-a569-9f9d702f9Adb" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(160, 96)
+scale = Vector2(0.2, 0.214525)
+texture = ExtResource("2_8o0j6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="NIVEL 1" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "NIVEL 1"
+
+[node name="NIVEL 2" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "NIVEL 2"
+
+[node name="NIVEL RANDOM" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RANDOM"
+
+[node name="SALIR" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SALIR"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NIVEL 1" to="." method="_on_nivel_1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NIVEL 2" to="." method="_on_nivel_2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NIVEL RANDOM" to="." method="_on_nivel_random_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SALIR" to="." method="_on_salir_pressed"]
