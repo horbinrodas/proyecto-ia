@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvbsh3hsjbu1l"]
+
+[ext_resource type="Script" path="res://npc_dialog.gd" id="1_cruwg"]
+[ext_resource type="Texture2D" uid="uid://dy0yng0rkmssh" path="res://art/kenney_tiny-dungeon/Tiles/tile_0000.png" id="2_181cx"]
+
+[node name="DialogoFNPC" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cruwg")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 85.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 137.0
+offset_bottom = 77.0
+bbcode_enabled = true
+text = "[b][/b]
+[font size=1][/font]
+"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 168.0
+offset_bottom = 47.0
+icon = ExtResource("2_181cx")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

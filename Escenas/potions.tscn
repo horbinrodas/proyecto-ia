@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://dixufp2ad3cfd"]
+
+[ext_resource type="Script" path="res://scripts/Potion2D.gd" id="1_0lw1t"]
+[ext_resource type="Texture2D" uid="uid://btiycrvsdbd3r" path="res://art/16x16 Assorted RPG Icons/potions.png" id="1_8gpul"]
+[ext_resource type="AudioStream" uid="uid://bna23q78lodj0" path="res://Music/moneda (mp3cut.net).wav" id="3_nwdw8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxlse"]
+
+[sub_resource type="Animation" id="Animation_8kybv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_r1xjg"]
+resource_name = "potions"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 19, 21, 82]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hwrym"]
+_data = {
+"RESET": SubResource("Animation_8kybv"),
+"potions": SubResource("Animation_r1xjg")
+}
+
+[node name="Potion" type="Node2D"]
+
+[node name="Coin2D" type="Area2D" parent="."]
+script = ExtResource("1_0lw1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin2D"]
+shape = SubResource("CircleShape2D_dxlse")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin2D"]
+texture = ExtResource("1_8gpul")
+hframes = 21
+vframes = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Coin2D"]
+libraries = {
+"": SubResource("AnimationLibrary_hwrym")
+}
+autoplay = "potions"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nwdw8")
+
+[connection signal="body_entered" from="Coin2D" to="Coin2D" method="_on_body_entered"]
